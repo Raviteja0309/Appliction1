@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'reacr-router-dom';
 
 
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
-    // let history = useHistory();
+    const navigate = useNavigate();
 
     const cssStyle = {
         display: 'flex',
@@ -33,7 +34,7 @@ function Login() {
                 setMessage(data.message);
                 setEmail("");
                 setPassword('');
-                // history.push('/home');
+                navigate('/home')
             }else{
                 const errorData = await response.json();
                 setMessage(errorData.message);
